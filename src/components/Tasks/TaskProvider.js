@@ -4,7 +4,7 @@ import React, { useState, createContext } from "react";
     The context is imported and used by individual components
     that need data
 */
-export const taskContext = createContext();
+export const TaskContext = createContext();
 
 /*
  This component establishes what data can be used.
@@ -12,11 +12,9 @@ export const taskContext = createContext();
 export const TaskProvider = (props) => {
 	const [tasks, setTasks] = useState([]);
 
-	const [searchTerms, setSearchTerms] = useState("");
-
 	// you'll need to to change the expanded route.
 	const getTasks = () => {
-		return fetch("http://localhost:8088/tasks?_expand=location")
+		return fetch("http://localhost:8088/tasks")
 			.then((res) => res.json())
 			.then(setTasks);
 	};
@@ -31,13 +29,13 @@ export const TaskProvider = (props) => {
 		}).then(getTasks);
 	};
 
-	const releaseTask = (taskId) => {
+	const deleteTask = (taskId) => {
 		return fetch(`http://localhost:8088/tasks/${taskId}`, {
 			method: "DELETE",
 		}).then(getTasks);
 	};
 
-	const updateTask = (task) => {
+	const editTask = (task) => {
 		return fetch(`http://localhost:8088/tasks/${task.id}`, {
 			method: "PUT",
 			headers: {
@@ -67,10 +65,8 @@ export const TaskProvider = (props) => {
 				getTasks,
 				addTask,
 				getTaskById,
-				updateTask,
-				releaseTask,
-				searchTerms,
-				setSearchTerms,
+				deleteTask,
+				editTask,
 			}}
 		>
 			{props.children}
