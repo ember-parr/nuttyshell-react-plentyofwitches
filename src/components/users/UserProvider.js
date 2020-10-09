@@ -12,7 +12,7 @@ export const UserProvider = (props) => {
   };
 
   return (
-    <AnimalContext.Provider
+    <UserContext.Provider
       value={{
         users,
         setUsers,
@@ -20,6 +20,6 @@ export const UserProvider = (props) => {
       }}
     >
       {props.children}
-    </AnimalContext.Provider>
+    </UserContext.Provider>
   );
 };
