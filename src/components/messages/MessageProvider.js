@@ -15,10 +15,21 @@ export const MessageProvider = props => {
         .then(setMessages)
     }
 
+    //add a message to the database
+    const addMessage = message => {
+        return fetch("http://localhost:8088/messages", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(message)
+        })
+    }
+
     //context provides messages and get messages
     return (
         <MessageContext.Provider value={{
-            messages, getMessages
+            messages, getMessages, addMessage
         }}>
             {props.children}
         </MessageContext.Provider>
