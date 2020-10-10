@@ -7,6 +7,7 @@ import { FriendProvider } from "./friends/FriendProvider";
 import { FriendList } from "./friends/FriendList";
 import { UserProvider } from "./users/UserProvider";
 import { FriendForm } from "./friends/FriendForm";
+import { FriendDetail } from "./friends/FriendDetail";
 
 export const ApplicationViews = (props) => {
   return (
@@ -34,6 +35,14 @@ export const ApplicationViews = (props) => {
         <FriendProvider>
           <Route exact path="/friends/manage">
             <FriendForm />
+          </Route>
+        </FriendProvider>
+      </UserProvider>
+
+      <UserProvider>
+        <FriendProvider>
+          <Route exact path="/friends/detail/:friendId(\d+)">
+            <FriendDetail />
           </Route>
         </FriendProvider>
       </UserProvider>

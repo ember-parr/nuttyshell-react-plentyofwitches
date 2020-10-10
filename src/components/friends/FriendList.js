@@ -8,7 +8,7 @@ import "./Friend.css";
 export const FriendList = () => {
   const { friends, getFriends } = useContext(FriendContext);
   const { users, getUsers } = useContext(UserContext);
-  const [filteredFriends, setFriends] = useState([]);
+  const [filteredUsers, setUsers] = useState([]);
 
   const history = useHistory();
 
@@ -17,16 +17,17 @@ export const FriendList = () => {
   }, []);
 
   useEffect(() => {
-    const friendOfUser = friends.filter(
+    const friendsOfUser = friends.filter(
       (friend) => friend.userId === parseInt(localStorage.user)
     );
-    const followingId = friendOfUser.map((friend) => friend.followingId);
+
+    const followingId = friendsOfUser.map((friend) => friend.followingId);
+
     const friendInformation = users.filter(
       (user) =>
         followingId.includes(user.id) && user.id !== parseInt(localStorage.user)
     );
-
-    setFriends(friendInformation);
+    setUsers(friendInformation);
   }, [friends, users]);
 
   return (
@@ -41,8 +42,8 @@ export const FriendList = () => {
       </button>
 
       <div className="friends">
-        {filteredFriends.map((friend) => (
-          <FriendCard key={friend.id} friend={friend} />
+        {filteredUsers.map((user) => (
+          <FriendCard key={user.id} friend={user} />
         ))}
       </div>
     </>

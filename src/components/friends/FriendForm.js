@@ -8,34 +8,37 @@ import { useHistory } from "react-router-dom";
 export const FriendForm = () => {
   const { friends, getFriends } = useContext(FriendContext);
   const { users, getUsers } = useContext(UserContext);
-  const [filteredFriends, setFriends] = useState([]);
+  const [filteredUsers, setUsers] = useState([]);
 
   useEffect(() => {
     getFriends().then(getUsers);
   }, []);
 
   useEffect(() => {
-    const checkFollowing = friends.map((friend) => friend.followingId);
-    const checkUser = friends.map((friend) => friend.userId);
-    const allRealtionships = [...checkFollowing, ...checkUser];
+    const friendsOfUser = friends.filter(
+      (friend) => friend.userId === parseInt(localStorage.user)
+    );
+
+    const followingId = friendsOfUser.map((friend) => friend.followingId);
 
     const nonFriendInformation = users.filter(
       (user) =>
-        allRealtionships.includes(user.id) === false &&
+        followingId.includes(user.id) === false &&
         user.id !== parseInt(localStorage.user)
     );
 
-    setFriends(nonFriendInformation);
+    setUsers(nonFriendInformation);
   }, [friends, users]);
 
   return (
     <>
       <div className="friends">
-        {filteredFriends.map((friend) => (
-          <FriendCard key={friend.id} friend={friend} />
+        {filteredUsers.map((user) => (
+          <>
+            <FriendCard key={user.id} friend={user} />
+          </>
         ))}
       </div>
-      {console.log(filteredFriends)}
     </>
   );
 };
