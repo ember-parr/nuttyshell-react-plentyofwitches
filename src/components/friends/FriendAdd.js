@@ -1,10 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { FriendContext } from "./FriendProvider";
 import { UserContext } from "../users/UserProvider";
 import { FriendCard } from "./FriendCard";
 
-export const FriendForm = () => {
+export const FriendAdd = () => {
   const { friends, getFriends, addFriend } = useContext(FriendContext);
   const { users, getUsers } = useContext(UserContext);
   const [filteredUsers, setUsers] = useState([]);
@@ -38,6 +37,7 @@ export const FriendForm = () => {
 
   return (
     <>
+      <h2>Add Friends</h2>
       <div className="friends">
         {filteredUsers.map((user) => (
           <>

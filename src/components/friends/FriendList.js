@@ -44,15 +44,6 @@ export const FriendList = () => {
 
   return (
     <>
-      <h2>Friends</h2>
-      <button
-        onClick={() => {
-          history.push("/friends/manage");
-        }}
-      >
-        Add Friends
-      </button>
-
       <div className="friends">
         {filteredUsers.map((user) => (
           <FriendCard
