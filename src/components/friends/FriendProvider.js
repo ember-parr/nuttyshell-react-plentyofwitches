@@ -11,6 +11,22 @@ export const FriendProvider = (props) => {
       .then(setFriends);
   };
 
+  const addFriend = (friendObj) => {
+    return fetch("http://localhost:8088/friends", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(friendObj),
+    }).then(getFriends);
+  };
+
+  const deleteFriend = (id) => {
+    return fetch(`http://localhost:8088/friends/${id}`, {
+      method: "DELETE",
+    }).then(getFriends);
+  };
+
   const getFriendById = (id) => {
     return fetch(
       `http://localhost:8088/friends/${id}?_expand=user`
@@ -24,6 +40,8 @@ export const FriendProvider = (props) => {
         setFriends,
         getFriends,
         getFriendById,
+        addFriend,
+        deleteFriend,
       }}
     >
       {props.children}

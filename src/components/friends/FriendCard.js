@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const FriendCard = ({ friend }) => (
+export const FriendCard = ({ friend, isFriend }) => (
   <section className="friend">
     <h3 className="friend__username">
       <Link to={`/friends/detail/${friend.id}`}>{friend.username}</Link>
@@ -10,5 +10,6 @@ export const FriendCard = ({ friend }) => (
       {friend.firstName} {friend.lastName}
     </p>
     <p className="friend__email">{friend.email}</p>
+    <div>{isFriend}</div>
   </section>
 );

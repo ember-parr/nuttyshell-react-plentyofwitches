@@ -1,14 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { FriendContext } from "./FriendProvider";
 import { UserContext } from "../users/UserProvider";
 import { FriendCard } from "./FriendCard";
 
-import { useHistory } from "react-router-dom";
-
 export const FriendForm = () => {
-  const { friends, getFriends } = useContext(FriendContext);
+  const { friends, getFriends, addFriend } = useContext(FriendContext);
   const { users, getUsers } = useContext(UserContext);
   const [filteredUsers, setUsers] = useState([]);
+
+  const addFriendship = (id) => {
+    const currentUser = parseInt(localStorage.user);
+    addFriend({ userId: id, followingId: currentUser });
+    addFriend({ userId: currentUser, followingId: id });
+  };
 
   useEffect(() => {
     getFriends().then(getUsers);
@@ -19,14 +24,15 @@ export const FriendForm = () => {
       (friend) => friend.userId === parseInt(localStorage.user)
     );
 
-    const followingId = friendsOfUser.map((friend) => friend.followingId);
+    const followingId = friendsOfUser.map((friend) => {
+      return friend.followingId;
+    });
 
     const nonFriendInformation = users.filter(
       (user) =>
         followingId.includes(user.id) === false &&
         user.id !== parseInt(localStorage.user)
     );
-
     setUsers(nonFriendInformation);
   }, [friends, users]);
 
@@ -35,7 +41,22 @@ export const FriendForm = () => {
       <div className="friends">
         {filteredUsers.map((user) => (
           <>
-            <FriendCard key={user.id} friend={user} />
+            <FriendCard
+              key={user.id}
+              friend={user}
+              isFriend={
+                <button
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addFriendship(user.id);
+                  }}
+                >
+                  {" "}
+                  Add{" "}
+                </button>
+              }
+            />
           </>
         ))}
       </div>
