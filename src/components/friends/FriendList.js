@@ -13,10 +13,10 @@ export const FriendList = () => {
     searchTerms,
   } = useContext(FriendContext);
   const { users, getUsers } = useContext(UserContext);
-  const [filteredUsers, setUsers] = useState([]);
+  const [filteredFriendUsers, setFriendUsers] = useState([]);
   const [filteredNotFriendUsers, setNotFriendUsers] = useState([]);
 
-  //delete friend
+  //delete two-way friendship from database
   const removeFriendship = (id) => {
     friends.map((friend) => {
       if (friend.userId === id) {
@@ -28,28 +28,35 @@ export const FriendList = () => {
     });
   };
 
-  //add friends
+  //add two-way friendship to database
   const addFriendship = (id) => {
     const currentUser = parseInt(localStorage.user);
     addFriend({ userId: id, followingId: currentUser });
     addFriend({ userId: currentUser, followingId: id });
   };
 
+  //get friends and users from database when searchTerms or frinnd status change
   useEffect(() => {
     getFriends().then(getUsers);
   }, []);
 
+  //get friends and users from database on page load
   useEffect(() => {
+    //get the current user friends
     const friendsOfUser = friends.filter(
       (friend) => friend.userId === parseInt(localStorage.user)
     );
+
+    //get and array of the current user friends Ids
     const followingId = friendsOfUser.map((friend) => friend.followingId);
 
+    //get the user objects for the current user friends
     const friendInformation = users.filter(
       (user) =>
         followingId.includes(user.id) && user.id !== parseInt(localStorage.user)
     );
 
+    //get the user objects of who the user is not friends with
     const nonFriendInformation = users.filter(
       (user) =>
         followingId.includes(user.id) === false &&
@@ -57,7 +64,8 @@ export const FriendList = () => {
     );
 
     if (searchTerms !== "") {
-      const subset = friendInformation.filter(
+      //search through friends by userId/name
+      const friendSubset = friendInformation.filter(
         (friend) =>
           friend.username
             .toLowerCase()
@@ -69,6 +77,7 @@ export const FriendList = () => {
             .toLowerCase()
             .includes(searchTerms.toLowerCase().trim())
       );
+      //search through nonfriends by userId/name
       const nonFriendSubset = nonFriendInformation.filter(
         (friend) =>
           friend.username
@@ -81,10 +90,12 @@ export const FriendList = () => {
             .toLowerCase()
             .includes(searchTerms.toLowerCase().trim())
       );
-      setUsers(subset);
+      // If the search field is not blank, display matching friends/nonfriends
+      setFriendUsers(friendSubset);
       setNotFriendUsers(nonFriendSubset);
     } else {
-      setUsers(friendInformation);
+      // If the search field is blank, display all friends/nonfriends
+      setFriendUsers(friendInformation);
       setNotFriendUsers(nonFriendInformation);
     }
   }, [friends, users, searchTerms]);
@@ -92,7 +103,8 @@ export const FriendList = () => {
   return (
     <>
       <div className="friends">
-        {filteredUsers.map((user) => (
+        {/* map through friends */}
+        {filteredFriendUsers.map((user) => (
           <FriendCard
             key={user.id}
             friend={user}
@@ -112,6 +124,7 @@ export const FriendList = () => {
         ))}
       </div>
       <h2>Add Friends</h2>
+      {/* map through nonfriends */}
       <div className="friends">
         {filteredNotFriendUsers.map((user) => (
           <>
