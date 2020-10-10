@@ -155,13 +155,13 @@
       "id": 5
     },
     {
-      "userId": 4,
-      "followingId": 1,
+      "userId": 1,
+      "followingId": 3,
       "id": 6
     },
     {
-      "userId": 1,
-      "followingId": 4,
+      "userId": 3,
+      "followingId": 1,
       "id": 7
     }
   ],

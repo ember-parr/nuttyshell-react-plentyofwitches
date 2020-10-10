@@ -6,7 +6,6 @@ import { MessageList } from "./messages/MessageList";
 import { FriendProvider } from "./friends/FriendProvider";
 import { FriendList } from "./friends/FriendList";
 import { UserProvider } from "./users/UserProvider";
-import { FriendAdd } from "./friends/FriendAdd";
 import { FriendDetail } from "./friends/FriendDetail";
 import { FriendSearch } from "./friends/FriendSearch";
 
@@ -29,7 +28,6 @@ export const ApplicationViews = (props) => {
           <Route exact path="/">
             <FriendSearch />
             <FriendList />
-            <FriendAdd />
           </Route>
         </FriendProvider>
       </UserProvider>
