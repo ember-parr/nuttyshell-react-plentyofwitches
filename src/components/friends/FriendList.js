@@ -10,6 +10,8 @@ export const FriendList = () => {
   const { users, getUsers } = useContext(UserContext);
   const [filteredFriends, setFriends] = useState([]);
 
+  const history = useHistory();
+
   useEffect(() => {
     getFriends().then(getUsers);
   }, []);
@@ -30,12 +32,19 @@ export const FriendList = () => {
   return (
     <>
       <h2>Friends</h2>
+      <button
+        onClick={() => {
+          history.push("/friends/manage");
+        }}
+      >
+        Add Friends
+      </button>
+
       <div className="friends">
         {filteredFriends.map((friend) => (
           <FriendCard key={friend.id} friend={friend} />
         ))}
       </div>
-      {console.log(filteredFriends)}
     </>
   );
 };
