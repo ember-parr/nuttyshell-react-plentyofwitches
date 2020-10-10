@@ -5,9 +5,13 @@ import { FriendCard } from "./FriendCard";
 import "./Friend.css";
 
 export const FriendList = () => {
-  const { friends, getFriends, deleteFriend, addFriend } = useContext(
-    FriendContext
-  );
+  const {
+    friends,
+    getFriends,
+    deleteFriend,
+    addFriend,
+    searchTerms,
+  } = useContext(FriendContext);
   const { users, getUsers } = useContext(UserContext);
   const [filteredUsers, setUsers] = useState([]);
   const [filteredNotFriendUsers, setNotFriendUsers] = useState([]);
@@ -39,7 +43,6 @@ export const FriendList = () => {
     const friendsOfUser = friends.filter(
       (friend) => friend.userId === parseInt(localStorage.user)
     );
-
     const followingId = friendsOfUser.map((friend) => friend.followingId);
 
     const friendInformation = users.filter(
@@ -53,9 +56,38 @@ export const FriendList = () => {
         user.id !== parseInt(localStorage.user)
     );
 
-    setUsers(friendInformation);
-    setNotFriendUsers(nonFriendInformation);
-  }, [friends, users]);
+    if (searchTerms !== "") {
+      const subset = friendInformation.filter(
+        (friend) =>
+          friend.username
+            .toLowerCase()
+            .includes(searchTerms.toLowerCase().trim()) ||
+          friend.firstName
+            .toLowerCase()
+            .includes(searchTerms.toLowerCase().trim()) ||
+          friend.lastName
+            .toLowerCase()
+            .includes(searchTerms.toLowerCase().trim())
+      );
+      const nonFriendSubset = nonFriendInformation.filter(
+        (friend) =>
+          friend.username
+            .toLowerCase()
+            .includes(searchTerms.toLowerCase().trim()) ||
+          friend.firstName
+            .toLowerCase()
+            .includes(searchTerms.toLowerCase().trim()) ||
+          friend.lastName
+            .toLowerCase()
+            .includes(searchTerms.toLowerCase().trim())
+      );
+      setUsers(subset);
+      setNotFriendUsers(nonFriendSubset);
+    } else {
+      setUsers(friendInformation);
+      setNotFriendUsers(nonFriendInformation);
+    }
+  }, [friends, users, searchTerms]);
 
   return (
     <>
