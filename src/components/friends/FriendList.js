@@ -18,21 +18,37 @@ export const FriendList = () => {
 
   //delete two-way friendship from database
   const removeFriendship = (id) => {
-    friends.map((friend) => {
-      if (friend.userId === id) {
-        deleteFriend(friend.id);
-      }
-      if (friend.followingId === id) {
-        deleteFriend(friend.id);
-      }
-    });
+    //get the selected user obj
+    const selectedUser = users.find((user) => user.id === id);
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete ${selectedUser.username}?`
+    );
+
+    if (confirmDelete == true) {
+      friends.map((friend) => {
+        if (friend.userId === id) {
+          deleteFriend(friend.id);
+        }
+        if (friend.followingId === id) {
+          deleteFriend(friend.id);
+        }
+      });
+    }
   };
 
   //add two-way friendship to database
   const addFriendship = (id) => {
-    const currentUser = parseInt(localStorage.user);
-    addFriend({ userId: id, followingId: currentUser });
-    addFriend({ userId: currentUser, followingId: id });
+    //get the selected user obj
+    const selectedUser = users.find((user) => user.id === id);
+    const confirmAdd = window.confirm(
+      `Are you sure you want to add ${selectedUser.username}?`
+    );
+
+    if (confirmAdd === true) {
+      const currentUser = parseInt(localStorage.user);
+      addFriend({ userId: id, followingId: currentUser });
+      addFriend({ userId: currentUser, followingId: id });
+    }
   };
 
   //get friends and users from database when searchTerms or frinnd status change
@@ -42,9 +58,10 @@ export const FriendList = () => {
 
   //get friends and users from database on page load
   useEffect(() => {
+    const currentUser = parseInt(localStorage.user);
     //get the current user friends
     const friendsOfUser = friends.filter(
-      (friend) => friend.userId === parseInt(localStorage.user)
+      (friend) => friend.userId === currentUser
     );
 
     //get and array of the current user friends Ids
@@ -52,15 +69,13 @@ export const FriendList = () => {
 
     //get the user objects for the current user friends
     const friendInformation = users.filter(
-      (user) =>
-        followingId.includes(user.id) && user.id !== parseInt(localStorage.user)
+      (user) => followingId.includes(user.id) && user.id !== currentUser
     );
 
     //get the user objects of who the user is not friends with
     const nonFriendInformation = users.filter(
       (user) =>
-        followingId.includes(user.id) === false &&
-        user.id !== parseInt(localStorage.user)
+        followingId.includes(user.id) === false && user.id !== currentUser
     );
 
     if (searchTerms !== "") {
