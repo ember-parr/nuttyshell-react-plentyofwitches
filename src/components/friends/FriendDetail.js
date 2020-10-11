@@ -10,6 +10,29 @@ export const FriendDetail = () => {
   //get id based on username selected
   const { friendId } = useParams();
 
+  const dateOfBirthString = (dobString) => {
+    var mL = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    if (dobString !== undefined) {
+      const dateString = dobString.split("-");
+      const month = mL[parseInt(dateString[1] - 1)];
+      const day = dateString[2];
+      return `${month} ${day}`;
+    }
+  };
+
   //get single user from database
   useEffect(() => {
     getUserById(friendId).then((response) => {
@@ -26,8 +49,10 @@ export const FriendDetail = () => {
         <p className="friend__name">
           {user.firstName} {user.lastName}
         </p>
-        <p className="friend__email">{user.email}</p>
-        <p className="friend__dateOfDate">Birth Date: {user.dateOfBirth}</p>
+        <p className="friend__email"> Emial{user.email}</p>
+        <p className="friend__dateOfDate">
+          Birthday: {dateOfBirthString(user.dateOfBirth)}
+        </p>
       </section>
     </>
   );

@@ -22,7 +22,6 @@ export const NuttyShell = () => (
         }
       }}
     />
-    <ApplicationViews />
     <Route path="/login">
       <Login />
     </Route>

@@ -6,7 +6,7 @@
       "email": "me@me.com",
       "firstName": "Steve",
       "lastName": "Doe",
-      "dateOfBirth": "20080124"
+      "dateOfBirth": "2008-01-24"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "email": "mary@me.com",
       "firstName": "Mary",
       "lastName": "Jones",
-      "dateOfBirth": "20081224"
+      "dateOfBirth": "2008-12-24"
     },
     {
       "username": "pklly92",
@@ -47,6 +47,14 @@
       "lastName": "Areal",
       "dateOfBirth": "1982-10-14",
       "id": 6
+    },
+    {
+      "username": "johnny",
+      "email": "test@mail.com",
+      "firstName": "Johnny",
+      "lastName": "Test",
+      "dateOfBirth": "2000-03-15",
+      "id": 7
     }
   ],
   "messages": [],
@@ -163,6 +171,36 @@
       "userId": 3,
       "followingId": 1,
       "id": 7
+    },
+    {
+      "userId": 3,
+      "followingId": 2,
+      "id": 8
+    },
+    {
+      "userId": 2,
+      "followingId": 3,
+      "id": 9
+    },
+    {
+      "userId": 4,
+      "followingId": 2,
+      "id": 10
+    },
+    {
+      "userId": 2,
+      "followingId": 4,
+      "id": 11
+    },
+    {
+      "userId": 3,
+      "followingId": 7,
+      "id": 12
+    },
+    {
+      "userId": 7,
+      "followingId": 3,
+      "id": 13
     }
   ],
   "tasks": [
