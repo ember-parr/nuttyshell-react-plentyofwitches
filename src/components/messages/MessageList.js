@@ -49,9 +49,10 @@ export const MessageList = () => {
              "date": new Date().getTime()
         })
         //clear the message after its been sent
-        .then(
+        .then(_ => {
             message.message = ""
-        )
+            setIsLoading(false)
+        })
        }
    }
 
