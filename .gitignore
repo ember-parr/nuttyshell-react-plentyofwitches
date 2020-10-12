@@ -22,6 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# database
 database.json
-package-lock.json
+
+#packages
 package.json
+package-lock.json
