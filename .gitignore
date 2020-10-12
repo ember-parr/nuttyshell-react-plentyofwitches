@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # database
+/api
 database.json
 
 #packages
