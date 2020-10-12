@@ -8,9 +8,6 @@ export const NavBar = (props) => {
         <NavLink href="/">Home</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/messages">Messages</NavLink>
-      </NavItem>
-      <NavItem>
         <NavLink href="/events">Events</NavLink>
       </NavItem>
       <NavItem>
