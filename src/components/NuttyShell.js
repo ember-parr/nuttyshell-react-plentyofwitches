@@ -1,13 +1,13 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { NavBar } from "./nav/NavBar";
+import { NavBarComponent } from "./nav/NavBarComponent";
 import { ApplicationViews } from "./ApplicationViews";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 
 export const NuttyShell = () => (
   <>
-    <NavBar />
+    {/* <NavBarComponent /> */}
     <ApplicationViews />
     <Route path="/login">
       <Login />
