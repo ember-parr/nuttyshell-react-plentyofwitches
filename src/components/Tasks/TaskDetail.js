@@ -11,13 +11,15 @@ export const TaskDetail = () => {
 	const { taskId } = useParams();
 	const history = useHistory();
 
+	const username = task.user?.username;
+
 	useEffect(() => {
 		console.log("useEffect", taskId);
 		getTaskById(taskId).then((response) => {
 			setTask(response);
 		});
 	}, []);
-
+	debugger;
 	return (
 		<section className="task">
 			<h3 className="task__name">Task Name: {task.name}</h3>
@@ -30,7 +32,7 @@ export const TaskDetail = () => {
 				{task.taskStatus ? "Complete" : "Incomplete"}
 			</div>
 			<div className="task__owner">
-				<b>Task Owner:</b> {task.user.username}
+				<b>Task Owner:</b> {username}
 			</div>
 
 			<button
