@@ -25,6 +25,4 @@ yarn-error.log*
 # database
 database.json
 
-#packages
-package.json
-package-lock.json
+
