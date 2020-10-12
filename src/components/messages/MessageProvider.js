@@ -24,6 +24,7 @@ export const MessageProvider = props => {
             },
             body: JSON.stringify(message)
         })
+        .then(getMessages)
     }
 
     //context provides messages and get messages

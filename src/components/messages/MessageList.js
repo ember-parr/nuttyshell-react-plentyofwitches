@@ -13,7 +13,7 @@ export const MessageList = () => {
     //get the current userId
    const userId = localStorage.getItem('user')
 
-   //local message storage
+   //initialize a local message
    const [ message, setMessage ] = useState({
        "userId": parseInt(userId),
        "message": "",
@@ -40,7 +40,6 @@ export const MessageList = () => {
 
    //add the submitted message to the database
    const constructMessageObject = () => {
-       debugger;
        if(message.message.trim() != ""){
         setIsLoading(true)
         addMessage({
@@ -49,6 +48,10 @@ export const MessageList = () => {
              "friendId": null,
              "date": new Date().getTime()
         })
+        //clear the message after its been sent
+        .then(
+            message.message = ""
+        )
        }
    }
 
@@ -70,5 +73,4 @@ export const MessageList = () => {
             </InputGroup>
        </div>
    )
-
 }
