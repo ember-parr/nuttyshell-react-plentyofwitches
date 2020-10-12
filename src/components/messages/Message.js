@@ -1,5 +1,5 @@
 import React from "react"
-import { ListGroupItem, Button, InputGroupAddon, InputGroupText } from 'reactstrap'
+import { ListGroupItem, Button, InputGroupAddon, InputGroupText, InputGroup } from 'reactstrap'
 
 //create HTML for a single message
 export const Message = ({message}) => {
@@ -8,8 +8,13 @@ export const Message = ({message}) => {
 
     return (
         <ListGroupItem className="message-container">
-            <div className="message_user">{message.user.username}:</div>
-            <div className="message_text">{message.message}</div>
+            <InputGroup>
+                <InputGroupText className="message_text">{message.user.username}: {message.message}</InputGroupText>
+                {{if(parseInt(message.userId) === userId){
+
+                }}}
+                <InputGroupAddon addonType="append"><Button color="danger">X</Button></InputGroupAddon>
+            </InputGroup>
         </ListGroupItem>
     )
 }
