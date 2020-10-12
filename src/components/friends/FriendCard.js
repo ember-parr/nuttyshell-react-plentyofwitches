@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Card, CardText, CardBody, CardTitle } from "reactstrap";
 
 export const FriendCard = ({ friend, isFriend }) => (
-  <section className="friend">
-    <h3 className="friend__username">
-      <Link to={`/friends/detail/${friend.id}`}>{friend.username}</Link>
-    </h3>
-    <p className="friend__name">
-      {friend.firstName} {friend.lastName}
-    </p>
-    <p className="friend__email">{friend.email}</p>
-    <div>{isFriend}</div>
-  </section>
+  <Card>
+    <CardBody>
+      <CardTitle>
+        <h3 className="friend__username">
+          <Link to={`/friends/detail/${friend.id}`}>{friend.username}</Link>
+        </h3>
+      </CardTitle>
+      <CardText>
+        {friend.firstName} {friend.lastName}
+      </CardText>
+      <CardText>{friend.email}</CardText>
+      <CardText>{isFriend}</CardText>
+    </CardBody>
+  </Card>
 );

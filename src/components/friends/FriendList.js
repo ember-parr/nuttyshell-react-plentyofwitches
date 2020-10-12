@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FriendContext } from "./FriendProvider";
 import { UserContext } from "../users/UserProvider";
 import { FriendCard } from "./FriendCard";
-import "./Friend.css";
+import { Button, Container, Row, Col } from "reactstrap";
 
 export const FriendList = () => {
   const {
@@ -117,51 +117,59 @@ export const FriendList = () => {
 
   return (
     <>
-      <div className="friends">
-        {/* map through friends */}
-        {filteredFriendUsers.map((user) => (
-          <FriendCard
-            key={user.id}
-            friend={user}
-            isFriend={
-              <button
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault();
-                  removeFriendship(user.id);
-                }}
-              >
-                {" "}
-                Delete{" "}
-              </button>
-            }
-          />
-        ))}
-      </div>
-      <h2>Add Friends</h2>
-      {/* map through nonfriends */}
-      <div className="friends">
-        {filteredNotFriendUsers.map((user) => (
-          <>
-            <FriendCard
-              key={user.id}
-              friend={user}
-              isFriend={
-                <button
-                  type="submit"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    addFriendship(user.id);
-                  }}
-                >
-                  {" "}
-                  Add{" "}
-                </button>
-              }
-            />
-          </>
-        ))}
-      </div>
+      <Container>
+        <div className="friends  mb-5">
+          {/* map through friends */}
+          <Row>
+            {filteredFriendUsers.map((user) => (
+              <Col xs="6" sm="4" key={user.id}>
+                <FriendCard
+                  friend={user}
+                  isFriend={
+                    <Button
+                      type="submit"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        removeFriendship(user.id);
+                      }}
+                    >
+                      {" "}
+                      Delete{" "}
+                    </Button>
+                  }
+                />
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </Container>
+      <Container>
+        <h2 className="text-center">Add Friends</h2>
+        {/* map through nonfriends */}
+        <div className="friends">
+          <Row>
+            {filteredNotFriendUsers.map((user) => (
+              <Col xs="6" sm="4" className="mb-3" key={user.id}>
+                <FriendCard
+                  friend={user}
+                  isFriend={
+                    <Button
+                      type="submit"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        addFriendship(user.id);
+                      }}
+                    >
+                      {" "}
+                      Add{" "}
+                    </Button>
+                  }
+                />
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </Container>
     </>
   );
 };

@@ -3,11 +3,6 @@ import { Route } from "react-router-dom";
 import { Home } from "./home/Home";
 import { MessageProvider } from "./messages/MessageProvider";
 import { MessageList } from "./messages/MessageList";
-import { FriendProvider } from "./friends/FriendProvider";
-import { FriendList } from "./friends/FriendList";
-import { UserProvider } from "./users/UserProvider";
-import { FriendDetail } from "./friends/FriendDetail";
-import { FriendSearch } from "./friends/FriendSearch";
 
 export const ApplicationViews = (props) => {
   return (
@@ -22,23 +17,6 @@ export const ApplicationViews = (props) => {
           <MessageList />
         </Route>
       </MessageProvider>
-
-      <UserProvider>
-        <FriendProvider>
-          <Route exact path="/">
-            <FriendSearch />
-            <FriendList />
-          </Route>
-        </FriendProvider>
-      </UserProvider>
-
-      <UserProvider>
-        <FriendProvider>
-          <Route exact path="/friends/detail/:friendId(\d+)">
-            <FriendDetail />
-          </Route>
-        </FriendProvider>
-      </UserProvider>
     </>
   );
 };

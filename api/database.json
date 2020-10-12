@@ -234,26 +234,6 @@
       "id": 5
     },
     {
-      "userId": 1,
-      "followingId": 3,
-      "id": 6
-    },
-    {
-      "userId": 3,
-      "followingId": 1,
-      "id": 7
-    },
-    {
-      "userId": 3,
-      "followingId": 2,
-      "id": 8
-    },
-    {
-      "userId": 2,
-      "followingId": 3,
-      "id": 9
-    },
-    {
       "userId": 4,
       "followingId": 2,
       "id": 10
@@ -264,13 +244,13 @@
       "id": 11
     },
     {
-      "userId": 4,
-      "followingId": 3,
+      "userId": 5,
+      "followingId": 2,
       "id": 12
     },
     {
-      "userId": 3,
-      "followingId": 4,
+      "userId": 2,
+      "followingId": 5,
       "id": 13
     }
   ],

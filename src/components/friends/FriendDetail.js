@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../users/UserProvider";
 import { Link } from "react-router-dom";
+import { Container, Card, CardText, CardBody, CardTitle } from "reactstrap";
 
 export const FriendDetail = () => {
   const { getUserById } = useContext(UserContext);
@@ -42,18 +43,21 @@ export const FriendDetail = () => {
 
   return (
     <>
-      <section key={user.id} className="friend">
-        {/* go back to home page*/}
-        <Link to="/">Back</Link>
-        <h3 className="friend__username">{user.username}</h3>
-        <p className="friend__name">
-          {user.firstName} {user.lastName}
-        </p>
-        <p className="friend__email"> Emial{user.email}</p>
-        <p className="friend__dateOfDate">
-          Birthday: {dateOfBirthString(user.dateOfBirth)}
-        </p>
-      </section>
+      <Container>
+        <Card className="m-5">
+          <CardBody>
+            <Link to="/friends">Back</Link>
+            <CardTitle className="m-4">
+              <h3 className="friend__username">{user.username}</h3>
+            </CardTitle>
+            <CardText>
+              {user.firstName} {user.lastName}
+            </CardText>
+            <CardText>{user.email}</CardText>
+            <CardText>Birthday: {dateOfBirthString(user.dateOfBirth)}</CardText>
+          </CardBody>
+        </Card>
+      </Container>
     </>
   );
 };
