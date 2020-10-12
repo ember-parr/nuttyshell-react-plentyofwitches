@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
-import "./NuttyShell.css";
+//import "./NuttyShell.css";
 
 export const NuttyShell = () => (
   <>
