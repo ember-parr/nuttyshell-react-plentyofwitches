@@ -127,6 +127,7 @@ export const FriendList = () => {
                   friend={user}
                   isFriend={
                     <Button
+                      color="danger"
                       type="submit"
                       onClick={(e) => {
                         e.preventDefault();
@@ -154,6 +155,7 @@ export const FriendList = () => {
                   friend={user}
                   isFriend={
                     <Button
+                      color="success"
                       type="submit"
                       onClick={(e) => {
                         e.preventDefault();
