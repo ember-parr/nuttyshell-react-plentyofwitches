@@ -22,8 +22,8 @@ export const TaskCard = ({ task }) => {
 						{new Date(task.date).toUTCString("en-US")}
 					</CardSubtitle>
 					<CardText>
-						With supporting text below as a natural lead-in to additional
-						content.
+						<b>Task Status: </b>
+						{task.taskStatus ? "Complete" : "incomplete"}
 					</CardText>
 					<Link to={`/tasks/detail/${task.id}`}>
 						<Button>Details</Button>

@@ -28,7 +28,7 @@ export const TaskDetail = () => {
 				{new Date(task.date).toUTCString("en-US")}
 			</div>
 			<div className="task__complete">
-				<b>Task status:</b>
+				<b>Task status: </b>
 				{task.taskStatus ? "Complete" : "Incomplete"}
 			</div>
 			<div className="task__owner">

@@ -12,14 +12,14 @@ export const ApplicationViews = (props) => {
 			{/* Render the location list when http://localhost:3000/ */}
 			{/* Routes for Tasks based "pages" */}
 			<TaskProvider>
-				<Route exact path="/">
+				<Route exact path="/Tasks">
 					<TaskList />
 				</Route>
 			</TaskProvider>
 
 			<TaskProvider>
 				<UserProvider>
-					<Route exact path="/tasks/detail/:taskId(\d+)">
+					<Route exact path="/Tasks/detail/:taskId(\d+)">
 						<TaskDetail />
 					</Route>
 				</UserProvider>
