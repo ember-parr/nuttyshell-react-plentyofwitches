@@ -23,5 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 database.json
+<<<<<<< HEAD
 package-lock.json
 package.json
+=======
+>>>>>>> main
