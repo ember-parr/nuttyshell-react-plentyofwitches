@@ -47,9 +47,9 @@ export const TaskProvider = (props) => {
 
 	// You'll need to change the expanded routes
 	const getTaskById = (id) => {
-		return fetch(
-			`http://localhost:8088/tasks/${id}?_expand=location&_expand=customer`
-		).then((res) => res.json());
+		return fetch(`http://localhost:8088/tasks/${id}?_expand=user`).then((res) =>
+			res.json()
+		);
 	};
 
 	/*
