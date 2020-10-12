@@ -1,6 +1,6 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
-import { Card, Button, CardHeader, CardText, Row, Col } from 'reactstrap';
+import { Card, Button, CardHeader, CardText, Col } from 'reactstrap';
 
 
 
