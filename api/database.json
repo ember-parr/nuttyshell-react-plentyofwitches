@@ -57,78 +57,7 @@
       "id": 7
     }
   ],
-  "messages": [
-    {
-      "userId": "1",
-      "message": "What's up, Y'all!",
-      "friendId": null,
-      "date": 1601321933248,
-      "id": 1
-    },
-    {
-      "userId": "1",
-      "message": "howdy doody",
-      "friendId": null,
-      "date": 1601059458488,
-      "id": 3
-    },
-    {
-      "userId": "1",
-      "message": "whatcha dorin",
-      "friendId": null,
-      "date": 1601059602536,
-      "id": 4
-    },
-    {
-      "userId": "1",
-      "message": "just hangin'",
-      "friendId": null,
-      "date": 1601059627658,
-      "id": 5
-    },
-    {
-      "userId": "1",
-      "message": "Wanna do food?",
-      "friendId": null,
-      "date": 1601064161090,
-      "id": 6
-    },
-    {
-      "userId": "1",
-      "message": "maybe snack?",
-      "friendId": null,
-      "date": 1601064189654,
-      "id": 7
-    },
-    {
-      "userId": "1",
-      "message": "Havin' a good time?",
-      "friendId": null,
-      "date": 1601321947682,
-      "id": 8
-    },
-    {
-      "userId": "4",
-      "message": "I'm good, how're you?",
-      "friendId": null,
-      "date": 1601321979711,
-      "id": 9
-    },
-    {
-      "userId": "4",
-      "message": "add",
-      "friendId": null,
-      "date": 1601304631301,
-      "id": 10
-    },
-    {
-      "userId": "3",
-      "message": "Hi, I'm parker. ",
-      "friendId": null,
-      "date": 1601479252450,
-      "id": 11
-    }
-  ],
+  "messages": [],
   "articles": [
     {
       "id": 1,
@@ -227,33 +156,7 @@
       "date": 1601480334632
     }
   ],
-  "friends": [
-    {
-      "userId": 1,
-      "followingId": 2,
-      "id": 5
-    },
-    {
-      "userId": 4,
-      "followingId": 2,
-      "id": 10
-    },
-    {
-      "userId": 2,
-      "followingId": 4,
-      "id": 11
-    },
-    {
-      "userId": 5,
-      "followingId": 2,
-      "id": 12
-    },
-    {
-      "userId": 2,
-      "followingId": 5,
-      "id": 13
-    }
-  ],
+  "friends": [],
   "tasks": [
     {
       "userId": 4,

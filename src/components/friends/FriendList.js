@@ -18,37 +18,21 @@ export const FriendList = () => {
 
   //delete two-way friendship from database
   const removeFriendship = (id) => {
-    //get the selected user obj
-    const selectedUser = users.find((user) => user.id === id);
-    const confirmDelete = window.confirm(
-      `Are you sure you want to delete ${selectedUser.username}?`
-    );
-
-    if (confirmDelete == true) {
-      friends.map((friend) => {
-        if (friend.userId === id) {
-          deleteFriend(friend.id);
-        }
-        if (friend.followingId === id) {
-          deleteFriend(friend.id);
-        }
-      });
-    }
+    friends.map((friend) => {
+      if (friend.userId === parseInt(id)) {
+        deleteFriend(friend.id);
+      }
+      if (friend.followingId === parseInt(id)) {
+        deleteFriend(friend.id);
+      }
+    });
   };
 
   //add two-way friendship to database
   const addFriendship = (id) => {
-    //get the selected user obj
-    const selectedUser = users.find((user) => user.id === id);
-    const confirmAdd = window.confirm(
-      `Are you sure you want to add ${selectedUser.username}?`
-    );
-
-    if (confirmAdd === true) {
-      const currentUser = parseInt(localStorage.user);
-      addFriend({ userId: id, followingId: currentUser });
-      addFriend({ userId: currentUser, followingId: id });
-    }
+    const currentUser = parseInt(localStorage.user);
+    addFriend({ userId: id, followingId: currentUser });
+    addFriend({ userId: currentUser, followingId: id });
   };
 
   //get friends and users from database when searchTerms or frinnd status change
