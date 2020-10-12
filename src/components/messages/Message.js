@@ -1,5 +1,5 @@
 import React from "react"
-import { ListGroupItem, Card, CardBody, CardText, CardGroup, Button } from 'reactstrap'
+import { ListGroupItem, Button, InputGroupAddon, InputGroupText } from 'reactstrap'
 
 //create HTML for a single message
 export const Message = ({message}) => {
