@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
 	Card,
 	Button,
@@ -24,7 +25,9 @@ export const TaskCard = ({ task }) => {
 						With supporting text below as a natural lead-in to additional
 						content.
 					</CardText>
-					<Button>this doesn't work</Button>
+					<Link to={`/tasks/detail/${task.id}`}>
+						<Button>Details</Button>
+					</Link>
 				</Card>
 			</Col>
 		</Row>

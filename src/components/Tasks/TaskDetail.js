@@ -1,15 +1,14 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "./TaskProvider";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { useParams, useHistory } from "react-router-dom";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 
-export const TaskDetailModal = (props) => {
-	const { getTaskById, deleteTask } = useContext(TaskContext);
+export const TaskDetail = () => {
+	const { getTaskById, deleteTask, editTask } = useContext(TaskContext);
 
 	const [task, setTask] = useState({});
 
 	const { taskId } = useParams();
-
 	const history = useHistory();
 
 	useEffect(() => {
@@ -19,37 +18,38 @@ export const TaskDetailModal = (props) => {
 		});
 	}, []);
 
-	const { buttonLabel, className } = props;
-
-	const [modal, setModal] = useState(false);
-
-	const toggle = () => setModal(!modal);
-
 	return (
-		<div>
-			<Button color="danger" onClick={toggle}>
-				{buttonLabel}
-			</Button>
-			<Modal isOpen={modal} toggle={toggle} className={className}>
-				<ModalHeader toggle={toggle}>Modal title</ModalHeader>
-				<ModalBody>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-					minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-					aliquip ex ea commodo consequat. Duis aute irure dolor in
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum.
-				</ModalBody>
-				<ModalFooter>
-					<Button color="primary" onClick={toggle}>
-						Do Something
-					</Button>{" "}
-					<Button color="secondary" onClick={toggle}>
-						Cancel
-					</Button>
-				</ModalFooter>
-			</Modal>
-		</div>
+		<section className="task">
+			<h3 className="task__name">Task Name: {task.name}</h3>
+			<div className="task__date">
+				<b>Task Date: </b>
+				{new Date(task.date).toUTCString("en-US")}
+			</div>
+			<div className="task__complete">
+				<b>Task status:</b>
+				{task.taskStatus ? "Complete" : "Incomplete"}
+			</div>
+			<div className="task__owner">
+				<b>Task Owner:</b> {task.user.username}
+			</div>
+
+			<button
+				onClick={() => {
+					history.push(`/Tasks/edit/${task.id}`);
+				}}
+			>
+				Edit
+			</button>
+
+			<button
+				onClick={() => {
+					deleteTask(task.id).then(() => {
+						history.push("/Tasks");
+					});
+				}}
+			>
+				Delete Task?
+			</button>
+		</section>
 	);
 };
