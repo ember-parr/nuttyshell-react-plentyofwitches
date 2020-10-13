@@ -21,11 +21,17 @@ export const ApplicationViews = (props) => {
         <Home />
       </Route>
 
-      <ArticleProvider>
-        <Route exact path="/articles">
-          <ArticleList />
-        </Route>
-      </ArticleProvider>
+            <MessageProvider>
+                <Route exact path="/">
+                    <MessageList />
+                </Route>
+            </MessageProvider>
+
+            <ArticleProvider>
+                <Route exact path="/articles">
+                    <ArticleList />
+                </Route>
+            </ArticleProvider>
 
       <ArticleProvider>
         <Route exact path="/articles/detail/:articleId(\d+)">
