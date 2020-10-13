@@ -11,15 +11,20 @@ export const UserProvider = (props) => {
       .then(setUsers);
   };
 
+  const getUserById = (id) => {
+    return fetch(`http://localhost:8088/users/${id}`).then((res) => res.json());
+  };
+
   return (
-    <AnimalContext.Provider
+    <UserContext.Provider
       value={{
         users,
         setUsers,
         getUsers,
+        getUserById,
       }}
     >
       {props.children}
-    </AnimalContext.Provider>
+    </UserContext.Provider>
   );
 };
