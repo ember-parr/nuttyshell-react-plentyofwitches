@@ -4,11 +4,12 @@ import "./Event.css"
 import { useParams, useHistory } from "react-router-dom"
 
 export const EventDetail = () => {
-    const { releaseEvent, getEventById } = useContext(EventContext)
+    // debugger
+    const { deleteEvent, getEventById } = useContext(EventContext)
 
     const [event, setEvent] = useState({})
-    const [location, setLocation] = useState({})
-    const [date, setDate] = useState({})
+    // const [location, setLocation] = useState({})
+    // const [date, setDate] = useState({})
 
     const { eventId } = useParams();
     const history = useHistory();
@@ -18,19 +19,17 @@ export const EventDetail = () => {
         getEventById(eventId)
             .then((response) => {
                 setEvent(response)
-                setLocation(response.location)
-                setDate(response.date)
             })
     }, [])
 
     return (
         <section className="event">
             <h3 className="event__name">{event.name}</h3>
-            <div className="event__location">Location: {location}</div>
-            <div className="event__date">Date: {date}</div>
+            <div className="event__location">Location: {event.eventLocationCity}</div>
+            <div className="event__date">Date: {event.date}</div>
             <button onClick={
                 () => {
-                    releaseEvent(event.id)
+                    deleteEvent(event.id)
                         .then(() => {
                             history.push("/events")
                         })
