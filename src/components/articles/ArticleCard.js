@@ -1,13 +1,11 @@
 import React, {useState} from "react"
 import { useHistory } from "react-router-dom"
-import { Card, Button, CardHeader, CardText, Col, Tooltip } from 'reactstrap';
+import { Card, Button, CardHeader, CardText, Col } from 'reactstrap';
 
 
 
 export const ArticleCard = ({ article }) => {
     const domHistory = useHistory()
-    const [tooltipOpen, setTooltipOpen] = useState(false);
-    const toggle = () => setTooltipOpen(!tooltipOpen);
     return (
       
         <Col sm="12">
