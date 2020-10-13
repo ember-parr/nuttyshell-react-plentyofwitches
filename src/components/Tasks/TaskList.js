@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { TaskContext } from "./TaskProvider";
 import { TaskCard } from "./TaskCard";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Task.css";
 
 export const TaskList = () => {
@@ -17,8 +17,9 @@ export const TaskList = () => {
 	return (
 		<>
 			<h1>Tasks</h1>
-
-			<button>Make Task DOESNT WORK</button>
+			<Link to={`/tasks/edit`}>
+				<button>Add a Task</button>
+			</Link>
 			<div className="tasks">
 				{tasks.map((task) => {
 					return <TaskCard key={task.id} task={task} />;
