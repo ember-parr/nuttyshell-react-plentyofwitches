@@ -12,8 +12,6 @@ import { FriendList } from "./friends/FriendList";
 import { UserProvider } from "./users/UserProvider";
 import { FriendDetail } from "./friends/FriendDetail";
 import { FriendSearch } from "./friends/FriendSearch";
-import { MessageProvider } from "./messages/MessageProvider";
-import { MessageList } from "./messages/MessageList";
 
 export const ApplicationViews = (props) => {
   return (
