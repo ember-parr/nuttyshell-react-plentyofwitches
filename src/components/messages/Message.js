@@ -6,7 +6,7 @@ import { ListGroupItem, Button, InputGroupAddon, InputGroupText, InputGroup } fr
 export const Message = ({message}) => {
 
     //get the removeMessage method from MessageContext
-    const { removeMessage } = useContext(MessageContext)
+    const { removeMessage, editMessage } = useContext(MessageContext)
 
     //get the current user
     const userId = parseInt(localStorage.getItem("user"))
@@ -18,6 +18,11 @@ export const Message = ({message}) => {
             <ListGroupItem className="message-container">
                 <InputGroup>
                     <InputGroupText className="message_text">{message.user.username}: {message.message}</InputGroupText>
+                    <InputGroupAddon addonType="append"><Button color="danger" onClick={() => {
+                            return (
+                                <Input placeholder="edit message"></Input>
+                            )
+                        }}>X</Button></InputGroupAddon>
                         <InputGroupAddon addonType="append"><Button color="danger" onClick={() => {
                             removeMessage(message.id)
                         }}>X</Button></InputGroupAddon>

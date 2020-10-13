@@ -51,7 +51,7 @@ export const MessageProvider = props => {
     //context provides messages and get messages
     return (
         <MessageContext.Provider value={{
-            messages, getMessages, addMessage, removeMessage
+            messages, getMessages, addMessage, removeMessage, editMessage
         }}>
             {props.children}
         </MessageContext.Provider>
