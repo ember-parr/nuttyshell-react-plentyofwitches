@@ -8,6 +8,10 @@ import { EventList } from "./events/EventList.js"
 import { EventForm } from "./events/EventForm.js"
 import { EventDetail } from "./events/EventDetail.js"
 import { EventSearch } from "./events/EventSearch.js"
+import { ArticleProvider } from "./articles/ArticleProvider"
+import { ArticleList } from "./articles/ArticleList"
+import { ArticleDetail } from "./articles/ArticleDetail"
+import { ArticleForm } from "./articles/ArticleForm"
 
 export const ApplicationViews = (props) => {
     return (
@@ -17,11 +21,11 @@ export const ApplicationViews = (props) => {
                 <Home />
             </Route>
 
-            <MessageProvider>
-                <Route exact path="/">
-                    <MessageList />
+            <ArticleProvider>
+                <Route exact path="/articles">
+                    <ArticleList />
                 </Route>
-            </MessageProvider>
+            </ArticleProvider>
 
             {/* *EVENTS* */}
 
@@ -49,6 +53,24 @@ export const ApplicationViews = (props) => {
                     <EventForm />
                 </Route>
             </EventProvider>
+
+            <ArticleProvider>
+                <Route exact path="/articles/detail/:articleId(\d+)">
+                    <ArticleDetail />
+                </Route>
+            </ArticleProvider>
+
+            <ArticleProvider>
+                <Route exact path="/articles/create">
+                    <ArticleForm />
+                </Route>
+            </ArticleProvider>
+
+            <ArticleProvider>
+                <Route exact path="/articles/edit/:articleId(\d+)">
+                    <ArticleForm />
+                </Route>
+            </ArticleProvider>
         </>
     )
 }
