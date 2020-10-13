@@ -23,7 +23,7 @@ export const TaskCard = ({ task }) => {
 					</CardSubtitle>
 					<CardText>
 						<b>Task Status: </b>
-						{task.taskStatus ? "Complete" : "incomplete"}
+						{task.taskStatus ? "Complete" : "Incomplete"}
 					</CardText>
 					<Link to={`/tasks/detail/${task.id}`}>
 						<Button>Details</Button>
