@@ -21,7 +21,6 @@ export const EventDetail = () => {
                 setEvent(response)
             })
     }, [])
-
     return (
         <section className="event">
             <h3 className="event__name">{event.name}</h3>

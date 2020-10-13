@@ -18,18 +18,19 @@ export const EventForm = () => {
     const { eventId } = useParams();
     const history = useHistory();
 
-    const [startDate, setStartDate] = useState(new Date());
+    // const [startDate, setStartDate] = useState(new Date());
 
 
     //when field changes, update state. This causes a re-render and updates the view.
     //Controlled component
-    const handleControlledInputChange = (event) => {
+    const handleControlledInputChange = (e) => {
+
         //When changing a state object or array, 
         //always create a copy make changes, and then set state.
         const newEvent = { ...event }
         //event is an object with properties. 
         //set the property to the new value
-        newEvent[event.target.name] = event.target.value
+        newEvent[e.target.name] = e.target.value
         //update state
         setEvent(newEvent)
     }
@@ -49,7 +50,7 @@ export const EventForm = () => {
     }, [])
 
     const constructEventObject = () => {
-        if (parseInt(event.locationId) === 0) {
+        if (event.eventLocationCity === "") {
             window.alert("Please select a location")
         } else {
             //disable the button - no extra clicks
@@ -57,21 +58,30 @@ export const EventForm = () => {
             if (eventId) {
                 //PUT - update
                 updateEvent({
+                    userId: parseInt(localStorage.getItem("user")),
                     id: event.id,
                     name: event.name,
-                    locationId: parseInt(event.locationId)
+                    eventLocationCity: event.eventLocationCity,
+                    eventLocationState: event.eventLocationState,
+                    eventLocationZip: event.eventLocationZip,
+                    date: event.date
                 })
                     .then(() => history.push(`/events/detail/${event.id}`))
             } else {
                 //POST - add
                 addEvent({
+                    userId: parseInt(localStorage.getItem("user")),
                     name: event.name,
-                    locationId: parseInt(event.locationId)
+                    eventLocationCity: event.eventLocationCity,
+                    eventLocationState: event.eventLocationState,
+                    eventLocationZip: event.eventLocationZip,
+                    date: event.date
                 })
                     .then(() => history.push("/events"))
             }
         }
     }
+
 
     return (
         <form className="eventForm">
@@ -88,18 +98,40 @@ export const EventForm = () => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="location">Location: </label>
-                    <input type="text" id="eventLocation" name="location" className="form-control"
-                        placeholder="Location"
+                    <label htmlFor="eventCity">City: </label>
+                    <input type="text" id="eventLocationCity" name="eventLocationCity" className="form-control"
+                        placeholder="City"
                         onChange={handleControlledInputChange}
-                        defaultValue={event.location} />
+                        defaultValue={event.eventLocationCity} />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="eventState">State: </label>
+                    <input type="text" id="eventLocationState" name="eventLocationState" className="form-control"
+                        placeholder="State"
+                        onChange={handleControlledInputChange}
+                        defaultValue={event.eventLocationState} />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="eventZip">Zip: </label>
+                    <input type="text" id="eventLocationZip" name="eventLocationZip" className="form-control"
+                        placeholder="Zip"
+                        onChange={handleControlledInputChange}
+                        defaultValue={event.eventLocationZip} />
                 </div>
             </fieldset>
 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventDate">Event Date: </label>
-                    <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                    <input type="date" id="date" name="date" className="form-control"
+                        onChange={handleControlledInputChange}
+                        defaultValue={event.date} />
                 </div>
             </fieldset>
 
