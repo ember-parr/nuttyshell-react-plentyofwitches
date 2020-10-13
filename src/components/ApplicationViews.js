@@ -1,8 +1,10 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { Home } from "./home/Home"
-import { MessageProvider } from "./messages/MessageProvider"
-import { MessageList } from "./messages/MessageList"
+import { ArticleProvider } from "./articles/ArticleProvider"
+import { ArticleList } from "./articles/ArticleList"
+import { ArticleDetail } from "./articles/ArticleDetail"
+import { ArticleForm } from "./articles/ArticleForm"
 
 export const ApplicationViews = (props) => {
     return (
@@ -12,11 +14,29 @@ export const ApplicationViews = (props) => {
                 <Home />
             </Route>
 
-            <MessageProvider>
-                <Route exact path="/">
-                    <MessageList />
+            <ArticleProvider>
+                <Route exact path="/articles">
+                    <ArticleList />
                 </Route>
-            </MessageProvider>
+            </ArticleProvider>
+
+            <ArticleProvider>
+               <Route exact path="/articles/detail/:articleId(\d+)">
+                    <ArticleDetail />
+                </Route>
+            </ArticleProvider> 
+
+            <ArticleProvider>
+                <Route exact path="/articles/create">
+                    <ArticleForm />
+                </Route>
+            </ArticleProvider>
+
+            <ArticleProvider>
+                <Route exact path="/articles/edit/:articleId(\d+)">
+                    <ArticleForm />
+                </Route>
+            </ArticleProvider>
         </>
     )
 }
