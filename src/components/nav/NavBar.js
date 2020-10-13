@@ -1,9 +1,10 @@
 import React from "react";
 import { Navbar, Nav, NavItem, NavLink } from "reactstrap";
+import "./NavBar.css";
 
 export const NavBar = (props) => {
   return (
-    <Navbar className="fixed-top" color="primary" light expand="md">
+    <Navbar className="sticky-top navBar" color="primary" light expand="md">
       <Nav>
         <NavItem>
           <NavLink className="text-white" href="/" active>
@@ -28,6 +29,14 @@ export const NavBar = (props) => {
         <NavItem>
           <NavLink className="text-white" href="/friends">
             Friends
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className="text-white"
+            href={`/friends/detail/${parseInt(localStorage.user)}`}
+          >
+            My Account
           </NavLink>
         </NavItem>
       </Nav>
