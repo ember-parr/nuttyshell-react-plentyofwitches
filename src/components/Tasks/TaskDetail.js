@@ -14,7 +14,6 @@ export const TaskDetail = () => {
 	const username = task.user?.username;
 
 	useEffect(() => {
-		console.log("useEffect", taskId);
 		getTaskById(taskId).then((response) => {
 			setTask(response);
 		});
