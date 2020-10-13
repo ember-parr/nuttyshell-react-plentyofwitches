@@ -4,6 +4,8 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { TaskContext } from "./TaskProvider";
 import { UserContext } from "../users/UserProvider";
 
+const convertToBoolean = (value) => {};
+
 export const TaskForm = (props) => {
 	const activeUserId = localStorage.getItem("user");
 
