@@ -5,6 +5,8 @@ import { ArticleProvider } from "./articles/ArticleProvider"
 import { ArticleList } from "./articles/ArticleList"
 import { ArticleDetail } from "./articles/ArticleDetail"
 import { ArticleForm } from "./articles/ArticleForm"
+import { MessageProvider } from "./messages/MessageProvider"
+import { MessageList } from "./messages/MessageList"
 
 export const ApplicationViews = (props) => {
     return (
@@ -13,6 +15,12 @@ export const ApplicationViews = (props) => {
             <Route exact path="/">
                 <Home />
             </Route>
+
+            <MessageProvider>
+                <Route exact path="/">
+                    <MessageList />
+                </Route>
+            </MessageProvider>
 
             <ArticleProvider>
                 <Route exact path="/articles">
