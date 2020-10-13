@@ -4,7 +4,13 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { TaskContext } from "./TaskProvider";
 import { UserContext } from "../users/UserProvider";
 
-const convertToBoolean = (value) => {};
+const convertToBoolean = (value) => {
+	if (value === "") {
+		return false;
+	} else if (value === "On") {
+		return true;
+	}
+};
 
 export const TaskForm = (props) => {
 	const activeUserId = localStorage.getItem("user");
@@ -15,6 +21,10 @@ export const TaskForm = (props) => {
 	const [task, setTask] = useState({});
 
 	const [isLoading, setIsLoading] = useState(true);
+
+	const [isChecked, setIsChecked] = useState(true);
+
+	const checkedValue = useRef(null);
 
 	const { taskId } = useParams();
 
@@ -49,14 +59,14 @@ export const TaskForm = (props) => {
 				editTask({
 					id: task.id,
 					name: task.name,
-					taskStatus: task.taskStatus,
+					taskStatus: isChecked,
 					userId: activeUserId,
 					date: Date.parse(task.date),
 				});
 			} else {
 				addTask({
 					name: task.name,
-					taskStatus: task.taskStatus,
+					taskStatus: isChecked,
 					userId: activeUserId,
 					date: Date.parse(task.date),
 				});
@@ -93,8 +103,8 @@ export const TaskForm = (props) => {
 					<Input
 						name="taskStatus"
 						type="checkbox"
-						onChange={handleControlledInputChange}
-						defaultChecked={!!task.taskStatus}
+						checked={isChecked}
+						onChange={(e) => setIsChecked(e.target.checked)}
 					/>
 					Task Complete?
 				</Label>
