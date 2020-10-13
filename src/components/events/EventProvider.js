@@ -6,13 +6,13 @@ export const EventProvider = (props) => {
     const [events, setEvents] = useState([])
 
     const getEvents = () => {
-        return fetch("http://localhost:8088/events?_expand=location")
+        return fetch("http://localhost:8088/events?_expand=user")
             .then(res => res.json())
             .then(setEvents)
     }
 
     const addEvent = eventObj => {
-        return fetch("http://localhost:8088/events?_expand=location", {
+        return fetch("http://localhost:8088/events?_expand=user", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -23,7 +23,7 @@ export const EventProvider = (props) => {
     }
 
     const getEventById = (id) => {
-        return fetch(`http://localhost:8088/events/${id}?_expand=location`)
+        return fetch(`http://localhost:8088/events/${id}?_expand=user`)
             .then(res => res.json())
     }
 
@@ -35,7 +35,7 @@ export const EventProvider = (props) => {
     }
 
     const updateEvent = event => {
-        return fetch(`http://localhost:8088/events/${event.id}?_expand=location`, {
+        return fetch(`http://localhost:8088/events/${event.id}?_expand=user`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
