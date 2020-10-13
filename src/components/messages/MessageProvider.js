@@ -36,6 +36,18 @@ export const MessageProvider = props => {
     }
 
 
+    //edit a message
+    const editMessage = message => {
+        return fetch(`http://localhost:8088/messages/${message.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(message)
+        })
+        .then(getMessages)
+    }
+
     //context provides messages and get messages
     return (
         <MessageContext.Provider value={{
