@@ -45,7 +45,7 @@ export const MessageList = () => {
         addMessage({
              "userId": message.userId,
              "message": message.message,
-             "friendId": null,
+             "private": false,
              "date": new Date().getTime()
         })
         //clear the message after its been sent
