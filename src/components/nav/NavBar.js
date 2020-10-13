@@ -1,10 +1,9 @@
 import React from "react";
 import { Navbar, Nav, NavItem, NavLink } from "reactstrap";
-import "./NavBar.css";
 
 export const NavBar = (props) => {
   return (
-    <Navbar className="sticky-top navBar" color="primary" light expand="md">
+    <Navbar className="sticky-top navBar" color="dark" expand="md">
       <Nav>
         <NavItem>
           <NavLink className="text-white" href="/" active>
