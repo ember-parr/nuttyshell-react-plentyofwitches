@@ -2,8 +2,8 @@ import React, { useContext } from "react"
 import { EventContext } from "./EventProvider"
 import "./Event.css"
 
-export const EventSearch = () => {
-    const { setSearchTerms } = useContext(EventContext)
+export const EventSearch = (props) => {
+    const { setSearch } = useContext(EventContext)
 
     return (
         <>
@@ -11,7 +11,7 @@ export const EventSearch = () => {
             <input type="text"
                 className="input--wide"
                 onKeyUp={
-                    (keyEvent) => setSearchTerms(keyEvent.target.value)
+                    (keyEvent) => setSearch(keyEvent.target.value)
                 }
                 placeholder="Search for an event... " />
         </>
