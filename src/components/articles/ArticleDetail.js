@@ -53,7 +53,6 @@ export const ArticleDetail = () => {
       )
       
     } else {
-        {console.log("user: ", article?.userId)}
         return (
             <div>
               <Jumbotron fluid>
