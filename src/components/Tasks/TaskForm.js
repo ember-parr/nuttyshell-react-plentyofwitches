@@ -4,14 +4,6 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { TaskContext } from "./TaskProvider";
 import { UserContext } from "../users/UserProvider";
 
-const convertToBoolean = (value) => {
-	if (value === "") {
-		return false;
-	} else if (value === "On") {
-		return true;
-	}
-};
-
 export const TaskForm = (props) => {
 	const activeUserId = localStorage.getItem("user");
 
@@ -22,7 +14,9 @@ export const TaskForm = (props) => {
 
 	const [isLoading, setIsLoading] = useState(true);
 
-	const [isChecked, setIsChecked] = useState(true);
+	const [isChecked, setIsChecked] = useState(false);
+
+	const [isPrivate, setIsPrivate] = useState(false);
 
 	const checkedValue = useRef(null);
 
@@ -60,6 +54,7 @@ export const TaskForm = (props) => {
 					id: task.id,
 					name: task.name,
 					taskStatus: isChecked,
+					private: isPrivate,
 					userId: activeUserId,
 					date: Date.parse(task.date),
 				});
@@ -68,6 +63,7 @@ export const TaskForm = (props) => {
 					name: task.name,
 					taskStatus: isChecked,
 					userId: activeUserId,
+					private: isPrivate,
 					date: Date.parse(task.date),
 				});
 			}
@@ -107,6 +103,17 @@ export const TaskForm = (props) => {
 						onChange={(e) => setIsChecked(e.target.checked)}
 					/>
 					Task Complete?
+				</Label>
+			</FormGroup>
+			<FormGroup check>
+				<Label check>
+					<Input
+						name="taskPrivate"
+						type="checkbox"
+						checked={isPrivate}
+						onChange={(e) => setIsPrivate(e.target.checked)}
+					/>
+					Task Private?
 				</Label>
 			</FormGroup>
 			<Button

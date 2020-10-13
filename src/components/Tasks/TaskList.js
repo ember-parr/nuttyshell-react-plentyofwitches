@@ -22,7 +22,9 @@ export const TaskList = () => {
 			</Link>
 			<div className="tasks">
 				{tasks.map((task) => {
-					return <TaskCard key={task.id} task={task} />;
+					if (task.taskStatus === false) {
+						return <TaskCard key={task.id} task={task} />;
+					}
 				})}
 			</div>
 		</>
