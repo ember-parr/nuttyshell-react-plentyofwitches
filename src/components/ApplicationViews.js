@@ -1,17 +1,22 @@
-import React from "react"
-import { Route } from "react-router-dom"
-import { Home } from "./home/Home"
-import { MessageProvider } from "./messages/MessageProvider"
-import { MessageList } from "./messages/MessageList"
-import { EventProvider } from "./events/EventProvider.js"
-import { EventList } from "./events/EventList.js"
-import { EventForm } from "./events/EventForm.js"
-import { EventDetail } from "./events/EventDetail.js"
-import { EventSearch } from "./events/EventSearch.js"
-import { ArticleProvider } from "./articles/ArticleProvider"
-import { ArticleList } from "./articles/ArticleList"
-import { ArticleDetail } from "./articles/ArticleDetail"
-import { ArticleForm } from "./articles/ArticleForm"
+import React from "react";
+import { Route } from "react-router-dom";
+import { Home } from "./home/Home";
+import { MessageProvider } from "./messages/MessageProvider";
+import { MessageList } from "./messages/MessageList";
+import { EventProvider } from "./events/EventProvider"
+import { EventList } from "./events/EventList"
+import { EventForm } from "./events/EventForm"
+import { EventDetail } from "./events/EventDetail"
+import { EventSearch } from "./events/EventSearch"
+import { ArticleProvider } from "./articles/ArticleProvider";
+import { ArticleList } from "./articles/ArticleList";
+import { ArticleDetail } from "./articles/ArticleDetail";
+import { ArticleForm } from "./articles/ArticleForm";
+import { FriendProvider } from "./friends/FriendProvider";
+import { FriendList } from "./friends/FriendList";
+import { UserProvider } from "./users/UserProvider";
+import { FriendDetail } from "./friends/FriendDetail";
+import { FriendSearch } from "./friends/FriendSearch";
 
 export const ApplicationViews = (props) => {
     return (
@@ -20,6 +25,12 @@ export const ApplicationViews = (props) => {
             <Route exact path="/">
                 <Home />
             </Route>
+
+            <MessageProvider>
+                <Route exact path="/">
+                    <MessageList />
+                </Route>
+            </MessageProvider>
 
             <ArticleProvider>
                 <Route exact path="/articles">
@@ -71,6 +82,23 @@ export const ApplicationViews = (props) => {
                     <ArticleForm />
                 </Route>
             </ArticleProvider>
+
+            <UserProvider>
+                <FriendProvider>
+                    <Route exact path="/friends">
+                        <FriendSearch />
+                        <FriendList />
+                    </Route>
+                </FriendProvider>
+            </UserProvider>
+
+            <UserProvider>
+                <FriendProvider>
+                    <Route exact path="/friends/detail/:friendId(\d+)">
+                        <FriendDetail />
+                    </Route>
+                </FriendProvider>
+            </UserProvider>
         </>
-    )
-}
+    );
+};
