@@ -8,7 +8,7 @@ export const EventList = ({ }) => {
     const { events, getEvents, searchTerms } = useContext(EventContext)
 
     // Since you are no longer ALWAYS displaying all of the events
-    const [filteredEvents, setFiltered] = useState([])
+    // const [filteredEvents, setFiltered] = useState([])
 
     const history = useHistory()
 
@@ -19,16 +19,16 @@ export const EventList = ({ }) => {
 
     // useEffect dependency array with dependencies - will run if dependency changes (state)
     // searchTerms will cause a change
-    useEffect(() => {
-        if (searchTerms !== "") {
-            // If the search field is not blank, display matching events
-            const subset = events.filter(event => event.name.toLowerCase().includes(searchTerms))
-            setFiltered(subset)
-        } else {
-            // If the search field is blank, display all events
-            setFiltered(events)
-        }
-    }, [searchTerms, events])
+    // useEffect(() => {
+    //     if (searchTerms !== "") {
+    //         // If the search field is not blank, display matching events
+    //         const subset = events.filter(event => event.name.toLowerCase().includes(searchTerms))
+    //         setFiltered(subset)
+    //     } else {
+    //         // If the search field is blank, display all events
+    //         setFiltered(events)
+    //     }
+    // }, [searchTerms, events])
 
     return (
         <>
@@ -39,7 +39,7 @@ export const EventList = ({ }) => {
             </button>
             <div className="events">
                 {
-                    filteredEvents.map(event => {
+                    events.map(event => {
                         return <EventCard key={event.id} event={event} />
                     })
                 }
