@@ -49,14 +49,17 @@ export const ApplicationViews = (props) => {
 				</Route>
 			</ArticleProvider>
 
-			<UserProvider>
-				<FriendProvider>
-					<Route exact path="/friends">
-						<FriendSearch />
-						<FriendList />
-					</Route>
-				</FriendProvider>
-			</UserProvider>
+      <MessageProvider>
+        <Route exact path="/">
+          <MessageList />
+        </Route>
+      </MessageProvider>
+
+      <ArticleProvider>
+        <Route exact path="/articles">
+          <ArticleList />
+        </Route>
+      </ArticleProvider>
 
 			<UserProvider>
 				<FriendProvider>
