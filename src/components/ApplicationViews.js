@@ -3,6 +3,10 @@ import { Route } from "react-router-dom";
 import { Home } from "./home/Home";
 import { MessageProvider } from "./messages/MessageProvider";
 import { MessageList } from "./messages/MessageList";
+import { ArticleProvider } from "./articles/ArticleProvider";
+import { ArticleList } from "./articles/ArticleList";
+import { ArticleDetail } from "./articles/ArticleDetail";
+import { ArticleForm } from "./articles/ArticleForm";
 import { FriendProvider } from "./friends/FriendProvider";
 import { FriendList } from "./friends/FriendList";
 import { UserProvider } from "./users/UserProvider";
@@ -17,11 +21,30 @@ export const ApplicationViews = (props) => {
         <Home />
       </Route>
 
-      <MessageProvider>
-        <Route exact path="/">
-          <MessageList />
+      <ArticleProvider>
+        <Route exact path="/articles">
+          <ArticleList />
         </Route>
-      </MessageProvider>
+      </ArticleProvider>
+
+      <ArticleProvider>
+        <Route exact path="/articles/detail/:articleId(\d+)">
+          <ArticleDetail />
+        </Route>
+      </ArticleProvider>
+
+      <ArticleProvider>
+        <Route exact path="/articles/create">
+          <ArticleForm />
+        </Route>
+      </ArticleProvider>
+
+      <ArticleProvider>
+        <Route exact path="/articles/edit/:articleId(\d+)">
+          <ArticleForm />
+        </Route>
+      </ArticleProvider>
+
       <UserProvider>
         <FriendProvider>
           <Route exact path="/friends">
