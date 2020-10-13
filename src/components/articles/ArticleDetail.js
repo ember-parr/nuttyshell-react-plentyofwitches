@@ -7,7 +7,8 @@ import { Jumbotron, Button } from "reactstrap"
 export const ArticleDetail = () => {
     const { getArticleById, deleteArticle } = useContext(ArticleContext)
 	
-	const [article, setArticle] = useState()
+    const [article, setArticle] = useState()
+    const [user, setUser] = useState()
 	
     const { articleId } = useParams();
     const history = useHistory();
@@ -15,10 +16,14 @@ export const ArticleDetail = () => {
     useEffect(() => {
         getArticleById(articleId)
         .then((response) => {
-			setArticle(response)
+            setArticle(response)
+            setUser(response.user)
 		})
 	}, [])
 
+    const userId = parseInt(localStorage.getItem("user"))
+
+    if(parseInt(article?.userId) === userId) {
     return (
         <div>
           <Jumbotron fluid>
@@ -40,6 +45,22 @@ export const ArticleDetail = () => {
           </p>
           </Jumbotron>
         </div>
-      );
+      )
+      
+    } else {
+        {console.log("user: ", article?.userId)}
+        return (
+            <div>
+              <Jumbotron fluid>
+              <h1 className="display-3">{article?.newsTitle}</h1>
+              <p className="lead">{article?.newsContent}</p>
+              <hr className="my-2" />
+              <p>URL: {article?.newsURL}</p>
+              <p>Created By: {user?.firstName}</p>
+              
+              </Jumbotron>
+            </div>
+          )
+    }
 }
 
