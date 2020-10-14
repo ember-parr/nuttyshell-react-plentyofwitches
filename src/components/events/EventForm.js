@@ -3,8 +3,6 @@ import React, { useContext, useEffect, useState } from "react"
 import { EventContext } from "./EventProvider"
 // import "./Event.css"
 import { useHistory, useParams } from 'react-router-dom';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 export const EventForm = () => {
     const { addEvent, getEventById, updateEvent } = useContext(EventContext)
