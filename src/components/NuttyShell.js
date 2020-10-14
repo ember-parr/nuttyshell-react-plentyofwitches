@@ -1,8 +1,10 @@
 import React from "react";
+import { NavBar } from "./nav/NavBar";
 import { Route, Redirect } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
+import { Footer } from "./footer/Footer";
 
 export const NuttyShell = () => (
   <>
@@ -11,8 +13,9 @@ export const NuttyShell = () => (
         if (localStorage.getItem("user")) {
           return (
             <>
-              {/* <NavBar /> */}
+              <NavBar />
               <ApplicationViews />
+              <Footer />
             </>
           );
         } else {
