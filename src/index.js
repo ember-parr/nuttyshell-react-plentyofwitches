@@ -8,12 +8,12 @@ import { NuttyShell } from "./components/NuttyShell";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <NuttyShell />
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<Router>
+			<NuttyShell />
+		</Router>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
