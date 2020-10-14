@@ -61,14 +61,6 @@ export const ApplicationViews = (props) => {
         </Route>
       </ArticleProvider>
 
-      <UserProvider>
-        <FriendProvider>
-          <Route exact path="/friends/detail/:friendId(\d+)">
-            <FriendDetail />
-          </Route>
-        </FriendProvider>
-      </UserProvider>
-
       <TaskProvider>
         <Route exact path="/tasks">
           <TaskList />
