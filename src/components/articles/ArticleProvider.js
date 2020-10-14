@@ -7,7 +7,7 @@ export const ArticleProvider = (props) => {
     const [searchTerms, setSearchTerms] = useState("")
 
     const getArticles = () => {
-        return fetch("http://localhost:8088/articles?_expand=user")
+        return fetch(`http://localhost:8088/articles?_expand=user`)
         .then(result => result.json())
         .then(setArticles)
     }
@@ -23,7 +23,7 @@ export const ArticleProvider = (props) => {
     }
 
     const getArticleById = (id) => {
-        return fetch(`http://localhost:8088/articles/${id}`)
+        return fetch(`http://localhost:8088/articles/${id}?_expand=user`)
         .then(result => result.json())
     }
 
