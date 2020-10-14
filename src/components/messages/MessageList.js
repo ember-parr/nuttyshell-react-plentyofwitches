@@ -62,7 +62,7 @@ export const MessageList = () => {
            <h2>Messages</h2>
            <ListGroup>
                 {
-                    messages.map(message => <Message key={message.id} message={message}/>)
+                    messages.map(message => <Message key={message.id} messageObj={message} setMessage={setMessage}/>)
                 }
            </ListGroup>
            <InputGroup>
