@@ -18,36 +18,36 @@ import { UserProvider } from "./users/UserProvider";
 import { TaskForm } from "./Tasks/TaskForm";
 
 export const ApplicationViews = (props) => {
-	return (
-		<>
-			{/* Render the location list when http://localhost:3000/ */}
-			<Route exact path="/">
-				<Home />
-			</Route>
+  return (
+    <>
+      {/* Render the location list when http://localhost:3000/ */}
+      <Route exact path="/">
+        <Home />
+      </Route>
 
-			<ArticleProvider>
-				<Route exact path="/articles">
-					<ArticleList />
-				</Route>
-			</ArticleProvider>
+      <ArticleProvider>
+        <Route exact path="/articles">
+          <ArticleList />
+        </Route>
+      </ArticleProvider>
 
-			<ArticleProvider>
-				<Route exact path="/articles/detail/:articleId(\d+)">
-					<ArticleDetail />
-				</Route>
-			</ArticleProvider>
+      <ArticleProvider>
+        <Route exact path="/articles/detail/:articleId(\d+)">
+          <ArticleDetail />
+        </Route>
+      </ArticleProvider>
 
-			<ArticleProvider>
-				<Route exact path="/articles/create">
-					<ArticleForm />
-				</Route>
-			</ArticleProvider>
+      <ArticleProvider>
+        <Route exact path="/articles/create">
+          <ArticleForm />
+        </Route>
+      </ArticleProvider>
 
-			<ArticleProvider>
-				<Route exact path="/articles/edit/:articleId(\d+)">
-					<ArticleForm />
-				</Route>
-			</ArticleProvider>
+      <ArticleProvider>
+        <Route exact path="/articles/edit/:articleId(\d+)">
+          <ArticleForm />
+        </Route>
+      </ArticleProvider>
 
       <MessageProvider>
         <Route exact path="/">
@@ -61,43 +61,51 @@ export const ApplicationViews = (props) => {
         </Route>
       </ArticleProvider>
 
-			<UserProvider>
-				<FriendProvider>
-					<Route exact path="/friends/detail/:friendId(\d+)">
-						<FriendDetail />
-					</Route>
-				</FriendProvider>
-			</UserProvider>
+      <TaskProvider>
+        <Route exact path="/tasks">
+          <TaskList />
+        </Route>
+      </TaskProvider>
 
-			<TaskProvider>
-				<Route exact path="/tasks">
-					<TaskList />
-				</Route>
-			</TaskProvider>
+      <TaskProvider>
+        <UserProvider>
+          <Route exact path="/tasks/edit">
+            <TaskForm />
+          </Route>
+        </UserProvider>
+      </TaskProvider>
 
-			<TaskProvider>
-				<UserProvider>
-					<Route exact path="/tasks/edit">
-						<TaskForm />
-					</Route>
-				</UserProvider>
-			</TaskProvider>
+      <TaskProvider>
+        <UserProvider>
+          <Route exact path="/tasks/detail/:taskId(\d+)">
+            <TaskDetail />
+          </Route>
+        </UserProvider>
+      </TaskProvider>
 
-			<TaskProvider>
-				<UserProvider>
-					<Route exact path="/tasks/detail/:taskId(\d+)">
-						<TaskDetail />
-					</Route>
-				</UserProvider>
-			</TaskProvider>
+      <TaskProvider>
+        <UserProvider>
+          <Route exact path="/tasks/edit/:taskId(\d+)">
+            <TaskForm />
+          </Route>
+        </UserProvider>
+      </TaskProvider>
+      <UserProvider>
+        <FriendProvider>
+          <Route exact path="/friends">
+            <FriendSearch />
+            <FriendList />
+          </Route>
+        </FriendProvider>
+      </UserProvider>
 
-			<TaskProvider>
-				<UserProvider>
-					<Route exact path="/tasks/edit/:taskId(\d+)">
-						<TaskForm />
-					</Route>
-				</UserProvider>
-			</TaskProvider>
-		</>
-	);
+      <UserProvider>
+        <FriendProvider>
+          <Route exact path="/friends/detail/:friendId(\d+)">
+            <FriendDetail />
+          </Route>
+        </FriendProvider>
+      </UserProvider>
+    </>
+  );
 };

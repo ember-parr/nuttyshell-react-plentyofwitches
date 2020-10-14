@@ -59,10 +59,12 @@ export const Register = (props) => {
           Close
         </button>
       </dialog>
-
-      <form className="form--login" onSubmit={handleRegister}>
+      <form
+        className="form--login container w-50 text-left m-5"
+        onSubmit={handleRegister}
+      >
         <h1 className="h3 mb-3 font-weight-normal">
-          Please Register for NSS Kennels
+          Please Register for Plenty of Witches
         </h1>
         <fieldset>
           <label htmlFor="firstName"> First Name </label>
@@ -121,7 +123,10 @@ export const Register = (props) => {
           />
         </fieldset>
         <fieldset>
-          <button type="submit"> Sign in </button>
+          <button type="submit" className="btn btn-primary m-2">
+            {" "}
+            Sign in{" "}
+          </button>
         </fieldset>
       </form>
     </main>

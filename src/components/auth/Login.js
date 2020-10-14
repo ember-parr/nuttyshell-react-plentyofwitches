@@ -28,7 +28,7 @@ export const Login = (props) => {
   };
 
   return (
-    <main className="container--login">
+    <main className="container--login container">
       <dialog className="dialog dialog--auth" ref={existDialog}>
         <div>User does not exist</div>
         <button
@@ -39,9 +39,9 @@ export const Login = (props) => {
         </button>
       </dialog>
 
-      <section>
+      <section className="container w-50 m-5">
         <form className="form--login" onSubmit={handleLogin}>
-          <h1>Nashville Kennels</h1>
+          <h1>Plenty Of Witches</h1>
           <h2>Please sign in</h2>
           <fieldset>
             <label htmlFor="inputEmail"> Email address </label>
@@ -56,11 +56,13 @@ export const Login = (props) => {
             />
           </fieldset>
           <fieldset>
-            <button type="submit">Sign in</button>
+            <button type="submit" className="btn btn-primary m-3">
+              Sign in
+            </button>
           </fieldset>
         </form>
       </section>
-      <section className="link--register">
+      <section className="link--register w-50 text-right">
         <Link to="/register">Not a member yet?</Link>
       </section>
     </main>
