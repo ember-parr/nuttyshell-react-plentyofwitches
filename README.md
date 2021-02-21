@@ -1,11 +1,13 @@
-Plenty of witches is a Halloween themed social site. Users can manager messages, tasks, events, friends and events.
+Group Project completed during course at Nashville Software School [October 2020]
 
+Plenty of witches is a Halloween themed social site. Users can manager messages, tasks, events, friends and events.
+My contribution to group project: News Article components.
 
 Technologies: React.js, ReactStrap, Json, HTML, CSS
 
 # Nutshell: The Information Dashboard
 
-## Instructions
+## Instructions for project:
 
 Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
 
